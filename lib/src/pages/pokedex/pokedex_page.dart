@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pokedex/src/data/pokemons.dart';
+import 'package:pokedex/src/pages/pokemon/pokemon_detail_page.dart';
 import 'package:pokedex/src/widgets/pokemon_card.dart';
 class PokedexPage extends StatelessWidget {
   @override
@@ -31,7 +32,9 @@ class PokedexPage extends StatelessWidget {
       ),
       physics: BouncingScrollPhysics(),
       padding: EdgeInsets.only(left: 25, right: 25, bottom: 55),
-      itemBuilder: (context,index) => PokemonCard(pokemons[index], pokemons[index].id, (){}),
+      itemBuilder: (context,index) => PokemonCard(pokemons[index], pokemons[index].id, (){
+        Navigator.pushNamed(context, PokemonDetailPage.routeName, arguments: pokemons[index]);
+      }),
     );
   }
 }
